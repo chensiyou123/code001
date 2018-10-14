@@ -16,8 +16,15 @@ public class InitSystem implements ServletContextListener,ApplicationContextAwar
 
     private static ApplicationContext applicationContext;
 
+    /**
+     * 根据application获取bean并查询数据
+     * @param servletContextEvent
+     */
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+        this.loadData(servletContextEvent);
+    }
+    public void loadData(ServletContextEvent servletContextEvent){
         ArcTypeService arcTypeService=  (ArcTypeService)applicationContext.getBean("arcTypeService");
         List<ArcType>arcTypeList = arcTypeService.query();
         servletContextEvent.getServletContext().setAttribute("allArcTypeList", arcTypeList);
@@ -28,6 +35,11 @@ public class InitSystem implements ServletContextListener,ApplicationContextAwar
 
     }
 
+    /**
+     * 获取application
+     * @param applicationContext
+     * @throws BeansException
+     */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext=applicationContext;

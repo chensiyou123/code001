@@ -6,16 +6,16 @@ package com.csy.code007.entity;
  *
  */
 public class ArcType {
-	private Integer id; // 编号
+	private String id; // 编号
 	private String name; // 资源类型名称
 	private String remark; // 描述
 	private Integer sort; // 排序（从小到大排序）
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
